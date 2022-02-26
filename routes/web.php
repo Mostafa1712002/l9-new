@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Posts;
+use App\Enums\PostsState;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
@@ -17,10 +18,19 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', function () {
-    return Posts::search("Praesentium")->get();
-    return Blade::render("hi every one");
 
-    return view('welcome');
+    $post = new Posts;
+    $post->user_id = 1;
+    $post->title = "the title";
+    $post->body = "the body";
+    $post->state = PostsState::Draft;
+    $post->save();
+
+    return "Done";
+    // return Posts::search("Praesentium")->get();
+    // return Blade::render("hi every one");
+
+    // return view('welcome');
 })->name("home");
 
 Route::controller(PostsController::class)->group(function () {
