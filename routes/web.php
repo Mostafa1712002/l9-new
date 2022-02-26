@@ -23,7 +23,7 @@ Route::get('/', function () {
     $post->user_id = 1;
     $post->title = "the title";
     $post->body = "the body";
-    $post->state = PostsState::Draft;
+    $post->state = PostsState::Draft; // "draft"
     $post->save();
 
     return "Done";

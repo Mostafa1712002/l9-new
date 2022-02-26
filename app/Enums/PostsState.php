@@ -2,6 +2,7 @@
 
 namespace App\Enums;
 
+
 enum  PostsState: string
 {
     case Draft = "draft";
